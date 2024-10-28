@@ -40,14 +40,20 @@ const App = () => {
     } else {
       dispatch(questionActions.answerWrong());
     }
+
+    setTimeout(() => {
+      setCurrentQuestion((prev) => (prev + 1) % totalQuestions); 
+      setUserAnswer(null);
+      setShowAnswer(false);
+    }, 5000);
   };
 
   return (
     <main className="flex items-center justify-center h-screen">
-      <div className="flex flex-col justify-center items-center bg-bgQuiz text-center mx-3 w-full h-[70%] lg:w-1/2 lg:h-1/2 rounded-lg shadow-md">
-        <h3 className="font-main font-semibold text-secondTextColor">Quiz</h3>
-        {/* <QuizIndicator currentQuest={currentQuestion} totalQuestions={totalQuestions}/> */}
-        <h2 className="text-[25px] font-main font-semibold text-mainTextColor">
+      <div className="flex flex-col justify-center items-center bg-bgQuiz text-center mx-3 w-full h-[80%] lg:w-1/2 lg:h-1/2 rounded-lg shadow-md">
+        <h3 className="font-main font-semibold mb-3 text-secondTextColor">Quiz</h3>
+        <QuizIndicator currentQuest={currentQuestion} totalQuestions={totalQuestions}/>
+        <h2 className="lg:text-[25px] text-[20px] font-main font-semibold text-mainTextColor">
           {questions[currentQuestion]?.question}
         </h2>
         <div className="mt-4 grid grid-cols-2 gap-5 px-5 lg:px-0 w-full lg:w-[60%]">
