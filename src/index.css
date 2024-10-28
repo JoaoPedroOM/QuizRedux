@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-image: url('/src/imgs/bg.jpg');
-    background-repeat: no-repeat;
-    height:100%;
-    width: 100vw;
-}
-
 body {
     background-image: url('/src/imgs/bg.jpg');
     background-repeat: no-repeat;

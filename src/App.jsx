@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuizIndicator from "./components/QuizIndicator";
 import correto from "./imgs/Check_round_fill.svg";
 import errado from "./imgs/Close_round_fill.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { questionActions } from "./store/question-slice";
+import Congrats from "./components/Congrats"
 
 const App = () => {
   const dispatch = useDispatch();
-  const totalQuestions = 3;
+  const totalQuestions = useSelector((state) => state.question.totalQuestions)
+  const quizCompleted = useSelector((state) => state.question.quizCompleted)
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [userAnswer, setUserAnswer] = useState(null);
@@ -42,11 +45,25 @@ const App = () => {
     }
 
     setTimeout(() => {
-      setCurrentQuestion((prev) => (prev + 1) % totalQuestions); 
+      if (currentQuestion + 1 === totalQuestions) {
+       dispatch(questionActions.completedQuiz())
+      } else {
+        setCurrentQuestion((prev) => prev + 1);
+      }
       setUserAnswer(null);
       setShowAnswer(false);
-    }, 5000);
+    }, 1000);
   };
+
+  useEffect(() => {
+    if (quizCompleted) {
+      setCurrentQuestion(0);
+    }
+  }, [quizCompleted]);
+
+  if (quizCompleted) {
+    return <Congrats />;
+  }
 
   return (
     <main className="flex items-center justify-center h-screen">

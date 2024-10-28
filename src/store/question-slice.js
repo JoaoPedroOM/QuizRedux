@@ -3,8 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const questionSlice = createSlice({
     name: 'question',
     initialState: {
+        totalQuestions: 3,
         correct: 0,
-        wrong: 0
+        wrong: 0,
+        quizCompleted: false
     }, 
     reducers: {
         answerCorrect(state, action){
@@ -12,7 +14,16 @@ const questionSlice = createSlice({
         },
         answerWrong(state, action){
             state.wrong++
+        },
+        completedQuiz(state){
+            state.quizCompleted = true;
+        },
+        resetQuiz(state){
+            state.quizCompleted = false;
+            state.correct = 0;
+            state.wrong = 0;
         }
+
     }
 })
 
