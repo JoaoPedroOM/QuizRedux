@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       colors:{
-        btnGradient: 'linear-gradient(#E65895, #BC6BE8)',
         mainTextColor: '#E2E4F3',
         secondTextColor: '#8B8EAB',
         bgQuiz: '#343964',

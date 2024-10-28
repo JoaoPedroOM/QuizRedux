@@ -7,7 +7,7 @@ const QuizIndicator = ({ currentQuestion, totalQuestions }) => {
         <div
           key={index}
           className={`w-4 h-4 rounded-full ${
-            index < currentQuestion ? "bg-btnGradient" : "bg-[#373D6D]"
+            index < currentQuestion ? "bg-gradient-to-r from-[#E65895] to-[#BC6BE8]" : "bg-[#373D6D]"
           }`}
         ></div>
       ))}
