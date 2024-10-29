@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const questionSlice = createSlice({
     name: 'question',
     initialState: {
-        totalQuestions: 3,
+        totalQuestions: 8,
         correct: 0,
         wrong: 0,
         quizCompleted: false

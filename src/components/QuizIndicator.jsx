@@ -2,7 +2,7 @@ import React from "react";
 
 const QuizIndicator = ({ currentQuest, totalQuestions }) => {
   return (
-    <div className="flex justify-center space-x-2 mb-4">
+    <div className="flex justify-center items-center space-x-2 mb-4">
       {Array.from({ length: totalQuestions }, (_, index) => (
         <div
           key={index}
